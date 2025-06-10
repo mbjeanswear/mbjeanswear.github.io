@@ -98,7 +98,28 @@ const sr = ScrollReveal({
 })
 
 sr.reveal(`.home__data, .products__container, .footer__container, .footer__info`)
-sr.reveal(`.home__images`, {delay: 600, origin: 'bottom'})
+sr.reveal(`.home__images`, {delay: 800, origin: 'bottom'})
 sr.reveal(`.new__card, .brand__img`, {interval: 100})
 sr.reveal(`.collection__explore:nth-child(1)`, {origin: 'right'})
 sr.reveal(`.collection__explore:nth-child(2)`, {origin: 'left'})
+
+
+
+/*=============== HOVER PRODUCT IMAGE SWAP ===============*/
+document.querySelectorAll('.product__image-container').forEach(container => {
+  const img = container.querySelector('img')
+  const primarySrc = img.getAttribute('data-primary')
+  const secondarySrc = img.getAttribute('data-secondary')
+
+  container.addEventListener('mouseenter', () => {
+      if (secondarySrc) {
+          img.src = secondarySrc
+      }
+  })
+
+  container.addEventListener('mouseleave', () => {
+      if (primarySrc) {
+          img.src = primarySrc
+      }
+  })
+})
